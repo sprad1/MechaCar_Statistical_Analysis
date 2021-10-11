@@ -29,3 +29,16 @@ lot_summary <- suspension_table %>% group_by(Manufacturing_Lot) %>% summarize(Me
                                                                               Var_PSI=var(PSI),
                                                                               Std_Dev_PSI=sd(PSI),
                                                                               Num_Suspension=n(), .groups = 'keep')
+
+### Deliverable 3 
+# 1. Write an RScript using t.test() function to determine if PSI across all manufacturing lots is statistically different from population mean of 1,500 pounds per square inch
+t.test(suspension_table$PSI,mu=1500)
+
+# 2. Write 3 more RScripts using t.test() & its subset() argument to determine if PSI for each manufacturing lot is statiscally different from population mean of 1,500 
+lot1 <- subset(suspension_table, Manufacturing_Lot=='Lot1')
+lot2 <- subset(suspension_table, Manufacturing_Lot=='Lot2')
+lot3 <- subset(suspension_table, Manufacturing_Lot=='Lot3')
+
+t.test(lot1$PSI,mu=1500)
+t.test(lot2$PSI,mu=1500)
+t.test(lot3$PSI,mu=1500)
